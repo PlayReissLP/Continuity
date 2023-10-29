@@ -21,7 +21,7 @@ import net.minecraft.util.math.Direction;
 
 public final class SpriteCalculator {
 	private static final BlockModels MODELS = MinecraftClient.getInstance().getBakedModelManager().getBlockModels();
-	private static final Supplier<Random> RANDOM_SUPPLIER = new Supplier<>() {
+	private static final Supplier<Random> RANDOM_SUPPLIER = new Supplier<Random>() {
 		private final Random random = new Random();
 
 		@Override
@@ -61,29 +61,6 @@ public final class SpriteCalculator {
 		return sprite;
 	}
 
-	/*public static Sprite calculateSprite(BlockState state, Direction face, Supplier<Random> randomSupplier) {
-		BakedModel model = MODELS.getModel(state);
-		try {
-			List<BakedQuad> quads = model.getQuads(state, face, randomSupplier.get());
-			if (!quads.isEmpty()) {
-				return ((BakedModel)quads.get(0)).getSprite();
-			}
-			quads = model.getQuads(state, null, randomSupplier.get());
-			if (!quads.isEmpty()) {
-				int amount = quads.size();
-				for (int i = 0; i < amount; i++) {
-					BakedQuad quad = quads.get(i);
-					if (quad.getFace() == face) {
-						return ((BakedModel)quad).getSprite();
-					}
-				}
-			}
-		} catch (Exception e) {
-			//
-		}
-		return ((BakedModel)model).getSprite();
-	}*/
-
 	public static Sprite calculateSprite(BlockState state, Direction face, Supplier<Random> randomSupplier) {
 		BakedModel model = MODELS.getModel(state);
 		try {
@@ -105,7 +82,6 @@ public final class SpriteCalculator {
 			//
 		}
 		return model.getSprite();
-		//return model.getParticleSprite();
 	}
 
 	@ApiStatus.Internal

@@ -2,7 +2,7 @@
   "required": true,
   "minVersion": "0.8",
   "package": "me.pepperbell.continuity.client.mixin",
-  "compatibilityLevel": "JAVA_16",
+  "compatibilityLevel": "JAVA_8",
   "client": [
     "BlockModelsMixin",
     "ChunkRendererRegionMixin",
@@ -13,7 +13,8 @@
     "ReloadableResourceManagerImplMixin",
     "RenderLayersMixin",
     "DirectionMixin",
-    "BakedQuadMixin"
+    "BakedQuadMixin",
+    "BakedModelManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

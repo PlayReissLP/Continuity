@@ -178,13 +178,11 @@ public class CTMBakedModel extends ForwardingBakedModel {
 		protected int completionFlags;
 		protected int resultFlags;
 
-		protected BlockPos.Mutable mutablePos = new BlockPos.Mutable();
-
 		public boolean shouldCull(BlockRenderView blockView, BlockPos pos, BlockState state, Direction cullFace) {
 			int mask = 1 << cullFace.ordinal();
 			if ((completionFlags & mask) == 0) {
 				completionFlags |= mask;
-				if (Block.shouldDrawSide(state, blockView, pos, cullFace/*, mutablePos.set(pos, cullFace)*/)) { // TODO Try to fix this
+				if (Block.shouldDrawSide(state, blockView, pos, cullFace)) {
 					resultFlags |= mask;
 					return false;
 				} else {

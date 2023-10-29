@@ -4,9 +4,10 @@
   "version": "${version}",
 
   "name": "Continuity",
-  "description": "Continuity is a Fabric mod built around modern APIs to allow for the most efficient connected textures experience possible. It is designed to provide full Optifine parity for all resource packs that use the Optifine/MCPatcher CTM format.",
+  "description": "The Continuity Fabric mod was downgraded to 1.16 by PlayReissLP. All credits go to Pepper_Bell. Continuity is a Fabric mod built around modern APIs to allow for the most efficient connected textures experience possible. It is designed to provide full Optifine parity for all resource packs that use the Optifine/MCPatcher CTM format.",
   "authors": [
-    "Pepper_Bell"
+    "Pepper_Bell",
+    "PlayReissLP"
   ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/continuity",
@@ -34,7 +35,7 @@
     "fabricloader": ">=0.11.3",
     "fabric": "*",
     "minecraft": "1.16.x",
-    "java": ">=16"
+    "java": "<=8"
   },
 
   "custom": {

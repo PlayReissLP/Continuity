@@ -4,7 +4,6 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
-//import grondag.canvas.terrain.region.input.InputRegion;
 import me.jellysquid.mods.sodium.client.world.WorldSlice;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.render.chunk.ChunkRendererRegion;
@@ -30,17 +29,6 @@ public final class BiomeRetriever {
 			return BiomeRetriever::getBiomeByWorldView;
 		}
 
-		if (FabricLoader.getInstance().isModLoaded("canvas")) { // TODO Try to fix this
-			//try {
-			//	Class<?> inputRegionClass = Class.forName("grondag.canvas.terrain.region.input.InputRegion", false, classLoader);
-			//	inputRegionClass.getMethod("getBiome", BlockPos.class);
-			//	return BiomeRetriever::getBiomeByInputRegion;
-			//} catch (ClassNotFoundException | NoSuchMethodException e) {
-			//	//
-			//}
-			return BiomeRetriever::getBiomeByWorldView;
-		}
-
 		if (ArrayUtils.contains(ChunkRendererRegion.class.getInterfaces(), BiomeView.class)) {
 			return BiomeRetriever::getBiomeByExtension;
 		}
@@ -57,34 +45,26 @@ public final class BiomeRetriever {
 	}
 
 	private static Biome getBiomeByWorldView(BlockRenderView blockView, BlockPos pos) {
-		if (blockView instanceof WorldView worldView) {
-			return worldView.getBiome(pos);
+		if (blockView instanceof WorldView) {
+			return ((WorldView)blockView).getBiome(pos);
 		}
 		return null;
 	}
 
 	private static Biome getBiomeByExtension(BlockRenderView blockView, BlockPos pos) {
-		if (blockView instanceof BiomeView biomeView) {
-			return biomeView.getBiome(pos);
+		if (blockView instanceof BiomeView) {
+			return ((BiomeView)blockView).getBiome(pos);
 		}
 		return getBiomeByWorldView(blockView, pos);
 	}
 
 	// Sodium
 	private static Biome getBiomeByWorldSlice(BlockRenderView blockView, BlockPos pos) {
-		if (blockView instanceof WorldSlice worldSlice) {
-			return worldSlice.getBiome(pos.getX(), pos.getY(), pos.getZ());
+		if (blockView instanceof WorldSlice) {
+			return ((WorldSlice)blockView).getBiome(pos.getX(), pos.getY(), pos.getZ());
 		}
 		return getBiomeByWorldView(blockView, pos);
 	}
-
-	// Canvas
-	//private static Biome getBiomeByInputRegion(BlockRenderView blockView, BlockPos pos) { // TODO Try to fix this
-	//	if (blockView instanceof InputRegion inputRegion) {
-	//		return inputRegion.getBiome(pos);
-	//	}
-	//	return getBiomeByWorldView(blockView, pos);
-	//}
 
 	private interface Provider {
 		Biome getBiome(BlockRenderView blockView, BlockPos pos);

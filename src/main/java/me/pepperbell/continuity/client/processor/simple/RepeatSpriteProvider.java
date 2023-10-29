@@ -37,38 +37,38 @@ public class RepeatSpriteProvider implements SpriteProvider {
 		int spriteX;
 		int spriteY;
 		switch (face) {
-			case DOWN -> {
+			case DOWN:
 				// MCPatcher uses a different formula for the down face.
 				// It is not used here to maintain Optifine parity.
 				// spriteX = -x;
 				// spriteY = -z;
 				spriteX = x;
 				spriteY = -z - 1;
-			}
-			case UP -> {
+				break;
+			case UP:
 				spriteX = x;
 				spriteY = z;
-			}
-			case NORTH -> {
+				break;
+			case NORTH:
 				spriteX = -x - 1;
 				spriteY = -y;
-			}
-			case SOUTH -> {
+				break;
+			case SOUTH:
 				spriteX = x;
 				spriteY = -y;
-			}
-			case WEST -> {
+				break;
+			case WEST:
 				spriteX = z;
 				spriteY = -y;
-			}
-			case EAST -> {
+				break;
+			case EAST:
 				spriteX = -z - 1;
 				spriteY = -y;
-			}
-			default -> {
+				break;
+			default:
 				spriteX = 0;
 				spriteY = 0;
-			}
+				break;
 		}
 
 		spriteX %= width;

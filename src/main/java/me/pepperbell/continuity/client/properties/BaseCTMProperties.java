@@ -121,8 +121,8 @@ public class BaseCTMProperties implements CTMProperties {
 	 */
 	@Override
 	public int compareTo(@NotNull CTMProperties o) {
-		if (o instanceof BaseCTMProperties o1) {
-			int c = MathUtil.signum(weight - o1.weight);
+		if (o instanceof BaseCTMProperties) {
+			int c = MathUtil.signum(weight - ((BaseCTMProperties)o).weight);
 			if (c != 0) {
 				return c;
 			}
@@ -133,7 +133,9 @@ public class BaseCTMProperties implements CTMProperties {
 		if (!affectsTextures() && o.affectsTextures()) {
 			return -1;
 		}
-		if (o instanceof BaseCTMProperties o1) {
+		if (o instanceof BaseCTMProperties) {
+			BaseCTMProperties o1 = (BaseCTMProperties)o;
+
 			int c = MathUtil.signum(packPriority - o1.packPriority);
 			if (c != 0) {
 				return c;

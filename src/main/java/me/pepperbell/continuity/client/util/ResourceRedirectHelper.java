@@ -6,8 +6,8 @@ import net.minecraft.util.Identifier;
 
 public final class ResourceRedirectHelper {
 	public static void addRedirect(ResourceManager resourceManager, Identifier from, Identifier to) {
-		if (resourceManager instanceof ReloadableResourceManagerImplExtension extension) {
-			extension.addRedirect(from, to);
+		if (resourceManager instanceof ReloadableResourceManagerImplExtension) {
+			((ReloadableResourceManagerImplExtension)resourceManager).addRedirect(from, to);
 		}
 	}
 }

@@ -55,7 +55,9 @@ public class ModelsAddedCallbackHandler implements ModelsAddedCallback {
 
 		// Check which models should be wrapped
 		for (Map.Entry<Identifier, UnbakedModel> entry : unbakedModels.entrySet()) {
-			if (entry.getKey() instanceof ModelIdentifier id) {
+			if (entry.getKey() instanceof ModelIdentifier) {
+				ModelIdentifier id = (ModelIdentifier)entry.getKey();
+
 				// Only wrap final block state models
 				if (isBlockStateModelId(id)) {
 					UnbakedModel model = entry.getValue();

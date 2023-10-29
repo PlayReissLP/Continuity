@@ -606,8 +606,8 @@ public class CompactCTMQuadProcessor extends ConnectingQuadProcessor {
 				replacementSprites = new Sprite[replacementTextureAmount];
 				ObjectSet<Int2IntMap.Entry> entrySet = replacementMap.int2IntEntrySet();
 				ObjectIterator<Int2IntMap.Entry> entryIterator;
-				if (entrySet instanceof Int2IntMap.FastEntrySet fastEntrySet) {
-					entryIterator = fastEntrySet.fastIterator();
+				if (entrySet instanceof Int2IntMap.FastEntrySet) {
+					entryIterator = ((Int2IntMap.FastEntrySet)entrySet).fastIterator();
 				} else {
 					entryIterator = entrySet.iterator();
 				}
