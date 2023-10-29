@@ -7,6 +7,7 @@ import java.util.Random;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.function.Supplier;
 
+import me.pepperbell.continuity.client.mixinterface.IBakedQuadMixin;
 import org.jetbrains.annotations.ApiStatus;
 
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
@@ -60,12 +61,12 @@ public final class SpriteCalculator {
 		return sprite;
 	}
 
-	public static Sprite calculateSprite(BlockState state, Direction face, Supplier<Random> randomSupplier) {
+	/*public static Sprite calculateSprite(BlockState state, Direction face, Supplier<Random> randomSupplier) {
 		BakedModel model = MODELS.getModel(state);
 		try {
 			List<BakedQuad> quads = model.getQuads(state, face, randomSupplier.get());
 			if (!quads.isEmpty()) {
-				return quads.get(0).getSprite();
+				return ((BakedModel)quads.get(0)).getSprite();
 			}
 			quads = model.getQuads(state, null, randomSupplier.get());
 			if (!quads.isEmpty()) {
@@ -73,14 +74,38 @@ public final class SpriteCalculator {
 				for (int i = 0; i < amount; i++) {
 					BakedQuad quad = quads.get(i);
 					if (quad.getFace() == face) {
-						return quad.getSprite();
+						return ((BakedModel)quad).getSprite();
 					}
 				}
 			}
 		} catch (Exception e) {
 			//
 		}
-		return model.getParticleSprite();
+		return ((BakedModel)model).getSprite();
+	}*/
+
+	public static Sprite calculateSprite(BlockState state, Direction face, Supplier<Random> randomSupplier) {
+		BakedModel model = MODELS.getModel(state);
+		try {
+			List<BakedQuad> quads = model.getQuads(state, face, randomSupplier.get());
+			if (!quads.isEmpty()) {
+				return ((IBakedQuadMixin)quads.get(0)).getSprite();
+			}
+			quads = model.getQuads(state, null, randomSupplier.get());
+			if (!quads.isEmpty()) {
+				int amount = quads.size();
+				for (int i = 0; i < amount; i++) {
+					BakedQuad quad = quads.get(i);
+					if (quad.getFace() == face) {
+						return ((IBakedQuadMixin)quad).getSprite();
+					}
+				}
+			}
+		} catch (Exception e) {
+			//
+		}
+		return model.getSprite();
+		//return model.getParticleSprite();
 	}
 
 	@ApiStatus.Internal

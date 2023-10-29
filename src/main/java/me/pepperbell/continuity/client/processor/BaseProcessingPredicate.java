@@ -5,6 +5,7 @@ import java.util.Set;
 import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 
+import me.pepperbell.continuity.client.mixinterface.IDirectionMixin;
 import org.jetbrains.annotations.Nullable;
 
 import me.pepperbell.continuity.api.client.ProcessingDataProvider;
@@ -54,9 +55,9 @@ public class BaseProcessingPredicate implements ProcessingPredicate {
  			if (state.contains(Properties.AXIS)) {
  				Direction.Axis axis = state.get(Properties.AXIS);
  				if (axis == Direction.Axis.X) {
- 					face = face.rotateClockwise(Direction.Axis.Z);
+					 face = ((IDirectionMixin)(Object)face).getClockwise(Direction.Axis.Z);
 				} else if (axis == Direction.Axis.Z) {
-					face = face.rotateCounterclockwise(Direction.Axis.X);
+					face = ((IDirectionMixin)(Object)face).getCounterClockWise(Direction.Axis.X);
 				}
 			}
 			if (!faces.contains(face)) {

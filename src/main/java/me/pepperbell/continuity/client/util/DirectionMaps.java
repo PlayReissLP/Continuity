@@ -1,5 +1,6 @@
 package me.pepperbell.continuity.client.util;
 
+import me.pepperbell.continuity.client.mixinterface.IDirectionMixin;
 import org.apache.commons.lang3.ArrayUtils;
 
 import net.fabricmc.fabric.api.renderer.v1.mesh.QuadView;
@@ -20,9 +21,9 @@ public final class DirectionMaps {
 
 			Direction textureLeft;
 			if (face.getDirection() == Direction.AxisDirection.NEGATIVE) {
-				textureLeft = textureUp.rotateClockwise(face.getAxis());
+				textureLeft = ((IDirectionMixin)(Object)textureUp).getClockwise(face.getAxis());
 			} else {
-				textureLeft = textureUp.rotateCounterclockwise(face.getAxis());
+				textureLeft = ((IDirectionMixin)(Object)textureUp).getCounterClockWise(face.getAxis());
 			}
 
 			Direction[][] map = DIRECTION_MAPS[face.ordinal()];

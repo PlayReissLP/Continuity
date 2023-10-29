@@ -4,7 +4,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
-import grondag.canvas.terrain.region.input.InputRegion;
+//import grondag.canvas.terrain.region.input.InputRegion;
 import me.jellysquid.mods.sodium.client.world.WorldSlice;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.render.chunk.ChunkRendererRegion;
@@ -30,14 +30,14 @@ public final class BiomeRetriever {
 			return BiomeRetriever::getBiomeByWorldView;
 		}
 
-		if (FabricLoader.getInstance().isModLoaded("canvas")) {
-			try {
-				Class<?> inputRegionClass = Class.forName("grondag.canvas.terrain.region.input.InputRegion", false, classLoader);
-				inputRegionClass.getMethod("getBiome", BlockPos.class);
-				return BiomeRetriever::getBiomeByInputRegion;
-			} catch (ClassNotFoundException | NoSuchMethodException e) {
-				//
-			}
+		if (FabricLoader.getInstance().isModLoaded("canvas")) { // TODO Try to fix this
+			//try {
+			//	Class<?> inputRegionClass = Class.forName("grondag.canvas.terrain.region.input.InputRegion", false, classLoader);
+			//	inputRegionClass.getMethod("getBiome", BlockPos.class);
+			//	return BiomeRetriever::getBiomeByInputRegion;
+			//} catch (ClassNotFoundException | NoSuchMethodException e) {
+			//	//
+			//}
 			return BiomeRetriever::getBiomeByWorldView;
 		}
 
@@ -79,12 +79,12 @@ public final class BiomeRetriever {
 	}
 
 	// Canvas
-	private static Biome getBiomeByInputRegion(BlockRenderView blockView, BlockPos pos) {
-		if (blockView instanceof InputRegion inputRegion) {
-			return inputRegion.getBiome(pos);
-		}
-		return getBiomeByWorldView(blockView, pos);
-	}
+	//private static Biome getBiomeByInputRegion(BlockRenderView blockView, BlockPos pos) { // TODO Try to fix this
+	//	if (blockView instanceof InputRegion inputRegion) {
+	//		return inputRegion.getBiome(pos);
+	//	}
+	//	return getBiomeByWorldView(blockView, pos);
+	//}
 
 	private interface Provider {
 		Biome getBiome(BlockRenderView blockView, BlockPos pos);

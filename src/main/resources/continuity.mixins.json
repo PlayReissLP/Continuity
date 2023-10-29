@@ -11,7 +11,9 @@
     "ModelLoaderMixin",
     "NamespaceResourceManagerMixin",
     "ReloadableResourceManagerImplMixin",
-    "RenderLayersMixin"
+    "RenderLayersMixin",
+    "DirectionMixin",
+    "BakedQuadMixin"
   ],
   "injectors": {
     "defaultRequire": 1

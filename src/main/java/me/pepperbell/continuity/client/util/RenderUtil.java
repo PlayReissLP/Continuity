@@ -21,8 +21,9 @@ public final class RenderUtil {
 		return MATERIAL_FINDER.get().clear();
 	}
 
-	public static SpriteFinder getSpriteFinder() {
-		return SpriteFinder.get(MODEL_MANAGER.getAtlas(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE));
+	public static SpriteFinder getSpriteFinder() { // TODO Check if this is right
+		//return SpriteFinder.get(MODEL_MANAGER.getAtlas(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE));
+		return SpriteFinder.get(MODEL_MANAGER.getBlockModels().getModelManager().method_24153(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE));
 	}
 
 	public static int getTintColor(BlockState state, BlockRenderView blockView, BlockPos pos, int tintIndex) {

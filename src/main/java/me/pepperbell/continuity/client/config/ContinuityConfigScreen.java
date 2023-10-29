@@ -19,11 +19,10 @@ public class ContinuityConfigScreen extends Screen {
 	}
 
 	@Override
-	protected void init() {
-		addDrawableChild(createBooleanOptionButton(width / 2 - 75 - 90, height / 2 - 10, 150, 20, config.disableCTM));
-		addDrawableChild(createBooleanOptionButton(width / 2 - 75 + 90, height / 2 - 10, 150, 20, config.useManualCulling));
-
-		addDrawableChild(new ButtonWidget(width / 2 - 100, height - 40, 200, 20, ScreenTexts.DONE, button -> onClose()));
+	protected void init() { // TODO Try to fix this
+		addButton(createBooleanOptionButton(width / 2 - 75 - 90, height / 2 - 10, 150, 20, config.disableCTM));
+		addButton(createBooleanOptionButton(width / 2 - 75 + 90, height / 2 - 10, 150, 20, config.useManualCulling));
+		addButton(new ButtonWidget(width / 2 - 100, height - 40, 200, 20, ScreenTexts.DONE, button -> onClose()));
 	}
 
 	@Override
@@ -35,7 +34,7 @@ public class ContinuityConfigScreen extends Screen {
 
 	@Override
 	public void onClose() {
-		client.setScreen(parent);
+		client.openScreen(parent);
 	}
 
 	@Override

@@ -184,7 +184,7 @@ public class CTMBakedModel extends ForwardingBakedModel {
 			int mask = 1 << cullFace.ordinal();
 			if ((completionFlags & mask) == 0) {
 				completionFlags |= mask;
-				if (Block.shouldDrawSide(state, blockView, pos, cullFace, mutablePos.set(pos, cullFace))) {
+				if (Block.shouldDrawSide(state, blockView, pos, cullFace/*, mutablePos.set(pos, cullFace)*/)) { // TODO Try to fix this
 					resultFlags |= mask;
 					return false;
 				} else {
