@@ -1,6 +1,6 @@
 # Continuity
 
-The Continuity Fabric mod was downgraded to 1.16 by me. All credits go to the creator Pepper_Bell.
+The Continuity Fabric mod was ported to 1.16 by me. All credits go to the creator Pepper_Bell.
 
 Continuity is a Fabric mod built around modern APIs to allow for the most efficient connected textures experience possible. It is designed to provide full Optifine parity for all resource packs that use the Optifine/MCPatcher CTM format.
 
