@@ -1,4 +1,10 @@
-# Continuity
+# Disclaimer
+
+This Repository is not affiliated with the original Continuity in any way.
+
+Please report any issues to this Repository only.
+
+## Continuity
 
 The Continuity Fabric mod was ported to 1.16 by me. All credits go to the creator Pepper_Bell.
 
